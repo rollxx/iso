@@ -1,0 +1,6 @@
+<dl>
+    <?php foreach ($this->oc as $entry): ?>
+    <dt><?php echo $this->escape($entry->Name) ?> : 
+    <em><?php echo $this->escape($entry->Definition) ?></em></dt>
+    <?php endforeach ?>
+</dl>

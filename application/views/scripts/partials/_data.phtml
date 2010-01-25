@@ -1,0 +1,24 @@
+<dl>
+    <?php foreach ($this->data as $row): ?>
+		<?php foreach ($row->toArray() as $column => $value): ?>
+			<?php if (in_array($column, $this->visibleColumns)): ?>
+    			<dt><?php echo $this->escape($column) ?> => <?php echo $this->escape($value) ?></dt>
+			<?php endif ?>
+    	<?php endforeach ?>
+		<dd><?php
+		if (count($this->dependentData)) {
+			foreach ($this->dependentData as $entry) {
+				$dep = $row->findDependentRowset($entry)->current();
+				if ($dep) {
+					foreach ($dep->toArray() as $key => $value) {
+						if (in_array($key, $dep->getTable()->getVisibleColumns())) {
+							echo $this->escape($key); echo " => ";
+							echo $this->escape($value); echo "<br />";
+						}
+					}
+				}
+			}
+		}
+		 ?></dd>
+	<?php endforeach ?>
+</dl>
