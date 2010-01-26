@@ -17,14 +17,14 @@ class IndexController extends Zend_Controller_Action
 
 	public function enumeratedConceptualDomainAction(){
 		if ($this->checkRequest())
-			$this->addValues(new Default_Form_ConceptualDomain(), 'Default_Model_EnumeratedConceptualDomain');
+			$this->addValues(new Default_Form_EnumeratedConceptualDomain(), 'Default_Model_EnumeratedConceptualDomain');
 		else
 			$this->setData(new Default_Model_EnumeratedConceptualDomain());
 	}
 
 	public function enumeratedConceptualDomainValueMeaningAction(){
 		if ($this->checkRequest())
-			$this->addValues(new Default_Form_ConceptualDomain(), 'Default_Model_EnumeratedConceptualDomain');
+			$this->addValues(new Default_Form_EnumeratedConceptualDomainValueMeaning(), 'Default_Model_EnumeratedConceptualDomainValueMeaning');
 		else
 			$this->setData(new Default_Model_EnumeratedConceptualDomainValueMeaning());
 	}
@@ -45,7 +45,7 @@ class IndexController extends Zend_Controller_Action
 
 	public function nonEnumeratedConceptualDomainAction(){
 		if ($this->checkRequest())
-			$this->addValues(new Default_Form_ConceptualDomain(), 'Default_Model_EnumeratedConceptualDomain');
+			$this->addValues(new Default_Form_NonEnumeratedConceptualDomain(), 'Default_Model_NonEnumeratedConceptualDomain');
 		else
 			$this->setData(new Default_Model_NonEnumeratedConceptualDomain());
 	}
@@ -66,7 +66,7 @@ class IndexController extends Zend_Controller_Action
 
 	public function permissibleValueAction(){
 		if ($this->checkRequest())
-			$this->addValues(new Default_Form_ObjectClass(), 'Default_Model_ObjectClass');
+			$this->addValues(new Default_Form_PermissibleValue(), 'Default_Model_PermissibleValue');
 		else
 			$this->setData(new Default_Model_PermissibleValue(), array('Default_Model_Value'));
 	}
@@ -114,7 +114,10 @@ class IndexController extends Zend_Controller_Action
 	}
 
 	public function dataElementConceptAction(){
-		$this->setData(new Default_Model_DataElementConcept(), array('Default_Model_DataElement'));
+		if ($this->checkRequest())
+			$this->addValues(new Default_Form_DataElementConcept(), array('Default_Model_DataElementConcept'));
+		else
+			$this->setData(new Default_Model_DataElementConcept(), array('Default_Model_DataElement'));
 	}
 
 	public function dimensionalityAction(){
@@ -137,7 +140,7 @@ class IndexController extends Zend_Controller_Action
             if ($form->isValid($request->getPost())) {
                 $model = new $modelName($form->getValues());
                 $model->insert($form->getValues());
-                return $this->_helper->redirector('index');
+                return $this->_helper->redirector($this->getRequest()->getParam('action'));
             }
         }
 		$this->view->placeholder('inputForm')->append(
@@ -146,6 +149,7 @@ class IndexController extends Zend_Controller_Action
     }
 
 	private function checkRequest(){
+		var_dump($this->getRequest());
 		return $this->getRequest()->getParam('add');
 	}
 }

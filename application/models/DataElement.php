@@ -1,6 +1,6 @@
 <?php
 
-class Default_Model_DataElement extends Zend_Db_Table_Abstract {
+class Default_Model_DataElement extends Zend_Db_Table_Abstract implements Default_Model_IsoModel {
 	protected $_name = 'data_element';
 	protected $_referenceMap = array(
 		'DataElementConcept' => array(

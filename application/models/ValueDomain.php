@@ -1,6 +1,6 @@
 <?php
 
-class Default_Model_ValueDomain extends Zend_Db_Table_Abstract {
+class Default_Model_ValueDomain extends Zend_Db_Table_Abstract implements Default_Model_IsoModel {
 	protected $_name = 'value_domain';
 	protected $_dependentTables = array('Default_Model_DataElement');
 	protected $_referenceMap = array(

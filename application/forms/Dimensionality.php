@@ -3,7 +3,7 @@
 /**
 * 
 */
-class Default_Form_Dimensionality extends Zend_form
+class Default_Form_Dimensionality extends Default_Form_IsoForm
 {
 	
 	function init()

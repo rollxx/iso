@@ -3,7 +3,7 @@
 /**
 * 
 */
-class Default_Form_Property extends Zend_form
+class Default_Form_Property extends Default_Form_IsoForm
 {
 	
 	function init()
@@ -14,7 +14,7 @@ class Default_Form_Property extends Zend_form
 	            'required'   => true,
 	            'filters'    => array('StringTrim')
 				));
-		$this->addElement('text', 'Definition', array(
+		$this->addElement('textarea', 'Definition', array(
 		        'label'      => 'Definition:',
 		        'filters'    => array('StringTrim')
 				));

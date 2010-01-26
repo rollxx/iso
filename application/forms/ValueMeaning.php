@@ -3,7 +3,7 @@
 /**
 * 
 */
-class Default_Form_ValueMeaning extends Zend_form
+class Default_Form_ValueMeaning extends Default_Form_IsoForm
 {
 	
 	function init()
