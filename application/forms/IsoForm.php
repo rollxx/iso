@@ -11,7 +11,8 @@ class Default_Form_IsoForm extends Zend_Form
 		$data = new $model();
 		$result=array();
 		foreach ($data->fetchAll()->toArray() as $key => $value) {
-			$result[array_shift($value)] = array_shift($value);
+			$col = $data->getVisibleColumns();
+			$result[array_shift($value)] = $value[$col[0]];
 		}
 		return $result;
 	}

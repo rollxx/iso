@@ -11,7 +11,11 @@ class Default_Model_ValueDomain extends Zend_Db_Table_Abstract implements Defaul
 		'Default_Model_ConceptualDomain' => array(
 			'columns'=>array('idCD'),
 			'refTableClass'=>'Default_Model_ConceptualDomain',
-			'refColumns'=>array('idCD'))
+			'refColumns'=>array('idCD')),
+		'Default_Model_DataElement' => array(
+			'columns'=>array('idVD'),
+			'refTableClass'=>'Default_Model_DataElement',
+			'refColumns'=>array('idVD')),			
 			);
 
 	public function getVisibleColumns()

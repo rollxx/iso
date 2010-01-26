@@ -8,7 +8,7 @@ class Default_Form_NonEnumeratedConceptualDomain extends Default_Form_IsoForm
 	public function init()
 	{
 		$this->setMethod('post');
-		$this->addElement('text', 'Name', array(
+		$this->addElement('text', 'Name1', array(
 	            'label'      => 'Name:',
 	            'required'   => true,
 	            'filters'    => array('StringTrim')

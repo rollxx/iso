@@ -8,11 +8,15 @@ class Default_Model_ConceptualDomain extends Zend_Db_Table_Abstract implements D
 			'columns'=>array('idDim'),
 			'refTableClass'=>'Default_Model_Dimensionality',
 			'refColumns'=>array('idDim')),			
+		'Default_Model_DataElementConcept' => array(
+			'columns'=>array('idCD'),
+			'refTableClass'=>'Default_Model_DataElementConcept',
+			'refColumns'=>array('idCD')),			
 			);
 
 	public function getVisibleColumns()
 	{
-		return array('Name');
+		return array('cdName');
 	}
 	
 }

@@ -17,7 +17,11 @@ class Default_Model_DataElementConcept extends Zend_Db_Table_Abstract  implement
 		'Default_Model_Property' => array(
 			'columns'=>array('idP'),
 			'refTableClass'=>'Default_Model_Property',
-			'refColumns'=>array('idP')),			
+			'refColumns'=>array('idP')),
+		'Default_Model_DataElement' => array(
+			'columns'=>array('idDEC'),
+			'refTableClass'=>'Default_Model_DataElement',
+			'refColumns'=>array('idDEC')),			
 			);
 			
 	public function getVisibleColumns()

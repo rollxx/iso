@@ -12,7 +12,7 @@ class IndexController extends Zend_Controller_Action
 		if ($this->checkRequest())
 			$this->addValues(new Default_Form_ConceptualDomain(), 'Default_Model_ConceptualDomain');
 		else
-			$this->setData(new Default_Model_ConceptualDomain(), array('Default_Model_DataElementConcept'));
+			$this->setData(new Default_Model_ConceptualDomain(), array('Default_Model_Dimensionality'));
 	}
 
 	public function enumeratedConceptualDomainAction(){
@@ -110,14 +110,15 @@ class IndexController extends Zend_Controller_Action
 		if ($this->checkRequest())
 			$this->addValues(new Default_Form_DataElement(), 'Default_Model_DataElement');
 		else
-			$this->setData(new Default_Model_DataElement());
+			$this->setData(new Default_Model_DataElement(), array('Default_Model_DataElementConcept', 'Default_Model_ValueDomain')
+			);
 	}
 
 	public function dataElementConceptAction(){
 		if ($this->checkRequest())
-			$this->addValues(new Default_Form_DataElementConcept(), array('Default_Model_DataElementConcept'));
+			$this->addValues(new Default_Form_DataElementConcept(), 'Default_Model_DataElementConcept');
 		else
-			$this->setData(new Default_Model_DataElementConcept(), array('Default_Model_DataElement'));
+			$this->setData(new Default_Model_DataElementConcept(), array('Default_Model_ObjectClass', 'Default_Model_ConceptualDomain', 'Default_Model_Property'));
 	}
 
 	public function dimensionalityAction(){
@@ -136,8 +137,10 @@ class IndexController extends Zend_Controller_Action
 
     private function addValues($form, $modelName){
         $request = $this->getRequest();
+		// var_dump($request);
         if ($this->getRequest()->isPost()) {
             if ($form->isValid($request->getPost())) {
+				// var_dump($form->getValues());
                 $model = new $modelName($form->getValues());
                 $model->insert($form->getValues());
                 return $this->_helper->redirector($this->getRequest()->getParam('action'));
@@ -149,7 +152,6 @@ class IndexController extends Zend_Controller_Action
     }
 
 	private function checkRequest(){
-		var_dump($this->getRequest());
 		return $this->getRequest()->getParam('add');
 	}
 }
