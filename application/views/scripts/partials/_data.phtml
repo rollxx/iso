@@ -1,7 +1,22 @@
-<dl>
+<!-- <table border="1">
+	<?php $header=true ?>
     <?php foreach ($this->data as $row): ?>
 		<?php foreach ($row->toArray() as $column => $value): ?>
 			<?php if (in_array($column, $this->visibleColumns)): ?>
+				<?php if($header): ?>
+    				<tr><th><?php echo $this->escape($column) ?></th></tr>
+					<?php $header=false ?>
+				<?php endif ?>
+					<tr><td><?php echo $this->escape($value) ?></td><tr>
+			<?php endif ?>
+    	<?php endforeach ?>
+	
+	<?php endforeach ?>
+</table>
+<dl> -->
+    <?php foreach ($this->data as $row): ?>
+		<?php foreach ($row->toArray() as $column => $value): ?>
+			<?php if (in_array($column, $this->data->getTable()->getVisibleColumns())): ?>
     			<dt><?php echo $this->escape($column) ?> => <?php echo $this->escape($value) ?></dt>
 			<?php endif ?>
     	<?php endforeach ?>
@@ -12,6 +27,7 @@
 				if ($dep) {
 					foreach ($dep->toArray() as $key => $value) {
 						if (in_array($key, $dep->getTable()->getVisibleColumns())) {
+							echo($dep->getTableClass().'.');
 							echo $this->escape($key); echo " => ";
 							echo $this->escape($value); echo "<br />";
 						}

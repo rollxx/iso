@@ -19,7 +19,7 @@ class IndexController extends Zend_Controller_Action
 		if ($this->checkRequest())
 			$this->addValues(new Default_Form_EnumeratedConceptualDomain(), 'Default_Model_EnumeratedConceptualDomain');
 		else
-			$this->setData(new Default_Model_EnumeratedConceptualDomain());
+			$this->setData(new Default_Model_EnumeratedConceptualDomain(), array('Default_Model_ConceptualDomain'));
 	}
 
 	public function enumeratedConceptualDomainValueMeaningAction(){
@@ -33,7 +33,7 @@ class IndexController extends Zend_Controller_Action
 		if ($this->checkRequest())
 			$this->addValues(new Default_Form_ConceptualDomain(), 'Default_Model_EnumeratedConceptualDomain');
 		else
-			$this->setData(new Default_Model_EnumeratedValueDomain());
+			$this->setData(new Default_Model_EnumeratedValueDomain(), array('Default_Model_ValueDomain'));
 	}
 
 	public function enumeratedValueDomainPermissibleValueAction(){
@@ -47,14 +47,14 @@ class IndexController extends Zend_Controller_Action
 		if ($this->checkRequest())
 			$this->addValues(new Default_Form_NonEnumeratedConceptualDomain(), 'Default_Model_NonEnumeratedConceptualDomain');
 		else
-			$this->setData(new Default_Model_NonEnumeratedConceptualDomain());
+			$this->setData(new Default_Model_NonEnumeratedConceptualDomain(), array('Default_Model_ConceptualDomain'));
 	}
 
 	public function nonEnumeratedValueDomainAction(){
 		if ($this->checkRequest())
 			$this->addValues(new Default_Form_NonEnumeratedValueDomain(), 'Default_Model_NonEnumeratedValueDomain');
 		else
-			$this->setData(new Default_Model_NonEnumeratedValueDomain());
+			$this->setData(new Default_Model_NonEnumeratedValueDomain(), array('Default_Model_ValueDomain'));
 	}
 
 	public function objectClassAction(){
@@ -68,7 +68,7 @@ class IndexController extends Zend_Controller_Action
 		if ($this->checkRequest())
 			$this->addValues(new Default_Form_PermissibleValue(), 'Default_Model_PermissibleValue');
 		else
-			$this->setData(new Default_Model_PermissibleValue(), array('Default_Model_Value'));
+			$this->setData(new Default_Model_PermissibleValue(), array('Default_Model_Value', 'Default_Model_ValueMeaning'));
 	}
 
 	public function propertyAction(){
@@ -96,7 +96,7 @@ class IndexController extends Zend_Controller_Action
 		if ($this->checkRequest())
 			$this->addValues(new Default_Form_ValueDomain(), 'Default_Model_ValueDomain');
 		else
-			$this->setData(new Default_Model_ValueDomain(), array('Default_Model_DataElement'));
+			$this->setData(new Default_Model_ValueDomain(), array('Default_Model_DataElement', 'Default_Model_ConceptualDomain', 'Default_Model_UnitOfMeasure'));
 	}
 
 	public function valueMeaningAction(){
@@ -132,17 +132,26 @@ class IndexController extends Zend_Controller_Action
 		$data = $model->fetchAll();
 		$this->view->placeholder('dataGrid')->append(
 			$this->view->partial('partials/_data.phtml',
-				array('data' => $data, 'dependentData' => $dependentData, 'visibleColumns' => $model->getVisibleColumns())));
+				array('data' => $data,
+					'dependentData' => $dependentData)));
+		$link = $this->view->url(array(
+			'module'=>'default', 
+			'controller'=>$this->getRequest()->getParam('controller'),
+			'action'=>$this->getRequest()->getParam('action'),
+			'add'=>'new',
+			), '', true);
+			$this->view->placeholder('link')->append('<a href='.$link.'>Add new value</a>');
 	}
 
     private function addValues($form, $modelName){
         $request = $this->getRequest();
-		// var_dump($request);
         if ($this->getRequest()->isPost()) {
             if ($form->isValid($request->getPost())) {
-				// var_dump($form->getValues());
-                $model = new $modelName($form->getValues());
-                $model->insert($form->getValues());
+                $model = new $modelName(/*$form->getValues()*/);
+				if (method_exists($model, 'save'))
+					$model->save($form->getValues());
+				else
+					$model->insert($form->getValues());
                 return $this->_helper->redirector($this->getRequest()->getParam('action'));
             }
         }

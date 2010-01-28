@@ -31,21 +31,21 @@
 			<controller>Index</controller>
 			<action>Enumerated-Conceptual-Domain</action>
 		</EnumeratedConceptualDomain>
-		<EnumeratedConceptualDomainValueMeaning>
+		<!-- <EnumeratedConceptualDomainValueMeaning>
 			<label>Enumerated Conceptual Domain Value Meaning</label>
 			<controller>Index</controller>
 			<action>Enumerated-Conceptual-Domain-Value-Meaning</action>
-		</EnumeratedConceptualDomainValueMeaning>
+		</EnumeratedConceptualDomainValueMeaning> -->
 		<EnumeratedValueDomain>
 			<label>Enumerated Value Domain</label>
 			<controller>Index</controller>
 			<action>Enumerated-Value-Domain</action>
 		</EnumeratedValueDomain>
-		<EnumeratedValueDomainPermissibleValue>
+		<!-- <EnumeratedValueDomainPermissibleValue>
 			<label>Enumerated Value Domain Permissible Value</label>
 			<controller>Index</controller>
 			<action>Enumerated-Value-Domain-Permissible-Value</action>
-		</EnumeratedValueDomainPermissibleValue>
+		</EnumeratedValueDomainPermissibleValue> -->
 		<NonEnumeratedConceptualDomain>
 			<label>Non Enumerated Conceptual Domain</label>
 			<controller>Index</controller>

@@ -8,12 +8,12 @@ class Default_Form_PermissibleValue extends Default_Form_IsoForm
 	public function init()
 	{
 		$this->setMethod('post');
-		$vm = new Zend_Form_Element_Select('Value Meaning');
+		$vm = new Zend_Form_Element_Select('idVM');
 		$vm -> setLabel('Value Meaning:')
 			-> addMultiOptions($this->_getDependentSelect('Default_Model_ValueMeaning'));
 		$this->addElement($vm);
 		
-		$v = new Zend_Form_Element_Select('Value');
+		$v = new Zend_Form_Element_Select('idValue');
 		$v -> setLabel('Value:')
 			-> addMultiOptions($this->_getDependentSelect('Default_Model_Value'));
 		$this->addElement($v);

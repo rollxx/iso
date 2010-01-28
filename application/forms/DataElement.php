@@ -8,7 +8,7 @@ class Default_Form_DataElement extends Default_Form_IsoForm
 	public function init()
 	{
 		$this->setMethod('post');
-		$this->addElement('text', 'name', array(
+		$this->addElement('text', 'Name', array(
 	            'label'      => 'Name:',
 	            'required'   => true,
 	            'filters'    => array('StringTrim')
@@ -17,11 +17,11 @@ class Default_Form_DataElement extends Default_Form_IsoForm
 		        'label'      => 'Definition:',
 		        'filters'    => array('StringTrim')
 				));
-		$dec = new Zend_Form_Element_Select('data_element_concept');
+		$dec = new Zend_Form_Element_Select('idDEC');
 		$dec -> setLabel('Data Element Concept:')
 			-> addMultiOptions($this->_getDependentSelect('Default_Model_DataElementConcept'));
 		$this->addElement($dec);
-		$vm = new Zend_Form_Element_Select('Value Domain');
+		$vm = new Zend_Form_Element_Select('idVD');
 		$vm -> setLabel('Value Domain:')
 			-> addMultiOptions($this->_getDependentSelect('Default_Model_ValueDomain'));
 		$this->addElement($vm);

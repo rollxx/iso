@@ -34,6 +34,7 @@ class Default_Form_ValueDomain extends Default_Form_IsoForm
 		$this->addElement('submit', 'submit', array(
 		        'ignore'   => true,
 		        'label'    => 'Add Values',
+				'order'    => 10,
 		    ));
 	}
 }
