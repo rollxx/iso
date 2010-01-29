@@ -5,14 +5,25 @@ echo $this->doctype() ?>
 <head>  
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
   <title>ISO11179</title>
-  <?php echo $this->headLink()->appendStylesheet($this->baseUrl().'/css/global.css') ?>
+  <? $this->headLink()->appendStylesheet($this->baseUrl().'/css/main.css'); ?>
+  <? $this->headLink()->appendStylesheet($this->baseUrl().'/css/screen.css', 'screen, projection'); ?>
+  <? $this->headLink()->appendStylesheet($this->baseUrl().'/css/ie.css', 'screen, projection', 'IE'); ?>
+  <? $this->headLink()->appendStylesheet($this->baseUrl().'/css/print.css', 'print'); ?>
+  <?= $this->headlink(); ?>
 </head> 
 <body>
-	
-	<?= $this->render('header.phtml') ?>
-	
-<?= $this->navigation()->menu(); ?>
-<?= $this->layout()->content ?>
+<?= $this->render('header.phtml') ?>
+
+<div id="content" class='container showgrid'>
+	<div class='push+1 span-5 navigation'>
+		<?= $this->navigation()->menu(); ?>
+	</div>
+	<div class='push+1 span-15 maincontent'>
+		<?= $this->layout()->content ?>		
+	</div>
+</div>
+
+
 
 <?= $this->render('footer.phtml') ?>
 

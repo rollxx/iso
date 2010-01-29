@@ -17,7 +17,7 @@ class Default_Model_Dimensionality extends Zend_Db_Table_Abstract implements Def
 	{
 		return array('Description');
 	}
-
+//todo
 	public function getData()
 	{
 		$select = $this->_db->select()

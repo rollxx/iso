@@ -10,6 +10,18 @@
 			<label>Conceptual Domain</label>
 			<controller>Index</controller>
 			<action>conceptual-domain</action>
+			<pages>
+				<EnumeratedConceptualDomain>
+					<label>Enumerated Conceptual Domain</label>
+					<controller>Index</controller>
+					<action>Enumerated-Conceptual-Domain</action>
+				</EnumeratedConceptualDomain>
+				<NonEnumeratedConceptualDomain>
+					<label>Non Enumerated Conceptual Domain</label>
+					<controller>Index</controller>
+					<action>Non-Enumerated-Conceptual-Domain</action>
+				</NonEnumeratedConceptualDomain>								
+			</pages>
 		</ConceptualDomain>
 		<DataElementConcept>
 			<label>Data Element Concept</label>
@@ -26,36 +38,6 @@
 			<controller>Index</controller>
 			<action>dimensionality</action>
 		</Dimensionality>
-		<EnumeratedConceptualDomain>
-			<label>Enumerated Conceptual Domain</label>
-			<controller>Index</controller>
-			<action>Enumerated-Conceptual-Domain</action>
-		</EnumeratedConceptualDomain>
-		<!-- <EnumeratedConceptualDomainValueMeaning>
-			<label>Enumerated Conceptual Domain Value Meaning</label>
-			<controller>Index</controller>
-			<action>Enumerated-Conceptual-Domain-Value-Meaning</action>
-		</EnumeratedConceptualDomainValueMeaning> -->
-		<EnumeratedValueDomain>
-			<label>Enumerated Value Domain</label>
-			<controller>Index</controller>
-			<action>Enumerated-Value-Domain</action>
-		</EnumeratedValueDomain>
-		<!-- <EnumeratedValueDomainPermissibleValue>
-			<label>Enumerated Value Domain Permissible Value</label>
-			<controller>Index</controller>
-			<action>Enumerated-Value-Domain-Permissible-Value</action>
-		</EnumeratedValueDomainPermissibleValue> -->
-		<NonEnumeratedConceptualDomain>
-			<label>Non Enumerated Conceptual Domain</label>
-			<controller>Index</controller>
-			<action>Non-Enumerated-Conceptual-Domain</action>
-		</NonEnumeratedConceptualDomain>
-		<NonEnumeratedValueDomain>
-			<label>Non Enumerated Value Domain</label>
-			<controller>Index</controller>
-			<action>Non-Enumerated-Value-Domain</action>
-		</NonEnumeratedValueDomain>
 		<ObjectClass>
 			<label>Object Class</label>
 			<controller>Index</controller>
@@ -85,6 +67,18 @@
 			<label>Value Domain</label>
 			<controller>Index</controller>
 			<action>value-domain</action>
+			<pages>
+				<EnumeratedValueDomain>
+					<label>Enumerated Value Domain</label>
+					<controller>Index</controller>
+					<action>Enumerated-Value-Domain</action>
+				</EnumeratedValueDomain>
+				<NonEnumeratedValueDomain>
+					<label>Non Enumerated Value Domain</label>
+					<controller>Index</controller>
+					<action>Non-Enumerated-Value-Domain</action>
+				</NonEnumeratedValueDomain>
+			</pages>
 		</ValueDomain>
 		<ValueMeaning>
 			<label>Value Meaning</label>
