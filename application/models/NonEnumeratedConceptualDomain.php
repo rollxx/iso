@@ -1,7 +1,8 @@
 <?php
 
-class Default_Model_NonEnumeratedConceptualDomain extends Default_Model_ConceptualDomain implements Default_Model_IsoModel {
+class Default_Model_NonEnumeratedConceptualDomain extends Default_Model_ConceptualDomain {
 	protected $_name = 'nonenumerated_cd';
+	protected $_primary = 'idNECD';
 	protected $_dependentTables = array('Default_Model_ConceptualDomain');
 
 	public function getVisibleColumns()

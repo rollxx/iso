@@ -1,7 +1,8 @@
 <?php
 
-class Default_Model_EnumeratedValueDomain extends Default_Model_ValueDomain implements Default_Model_IsoModel {
+class Default_Model_EnumeratedValueDomain extends Default_Model_ValueDomain {
 	protected $_name = 'enumerated_vd';
+	protected $_primary = 'idEVD';
 	protected $_referenceMap = array(
 		'Default_Model_EnumeratedValueDomainPermissibleValue' => array(
 			'columns'=>'idEVD',

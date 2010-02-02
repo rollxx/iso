@@ -1,7 +1,8 @@
 <?php
 
-class Default_Model_ValueMeaning extends Zend_Db_Table_Abstract implements Default_Model_IsoModel {
+class Default_Model_ValueMeaning extends Default_Model_IsoModel {
 	protected $_name = 'value_meaning';
+	protected $_primary = 'idVM';
 	protected $_referenceMap = array(
 		'Default_Model_PermissibleValue' => array(
 			'columns'=>'idVM',

@@ -1,7 +1,8 @@
 <?php
 
-class Default_Model_ConceptualDomain extends Zend_Db_Table_Abstract implements Default_Model_IsoModel{
+class Default_Model_ConceptualDomain extends Default_Model_IsoModel{
 	protected $_name = 'conceptual_domain';
+	protected $_primary = 'idCD';
 	protected $_dependentTables = array('Default_Model_Dimensionality');
 	protected $_referenceMap = array(
 		'Default_Model_Dimensionality' => array(

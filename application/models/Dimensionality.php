@@ -1,7 +1,8 @@
 <?php
 
-class Default_Model_Dimensionality extends Zend_Db_Table_Abstract implements Default_Model_IsoModel{
+class Default_Model_Dimensionality extends Default_Model_IsoModel{
 	protected $_name = 'dimensionality';
+	protected $_primary = 'idDim';
 	protected $_referenceMap = array(
 		'Default_Model_ConceptualDomain' => array(
 			'columns'=>'idDim',
@@ -17,14 +18,6 @@ class Default_Model_Dimensionality extends Zend_Db_Table_Abstract implements Def
 	{
 		return array('Description');
 	}
-//todo
-	// public function getData()
-	// {
-	// 	$select = $this->_db->select()
-	// 	                        ->from($this->_name);
-	// 	$results = $this->getAdapter()->fetchAll($select);
-	// 	return $results;
-	// }
-
+	
 }
 ?>

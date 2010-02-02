@@ -1,7 +1,8 @@
 <?php
 
-class Default_Model_Property extends Zend_Db_Table_Abstract implements Default_Model_IsoModel {
+class Default_Model_Property extends Default_Model_IsoModel {
 	protected $_name = 'property';
+	protected $_primary = 'idP';
 	protected $_dependentTables = array('Default_Model_DataElementConcept');
 	protected $_referenceMap = array(
 		'Default_Model_DataElementConcept' => array(
@@ -14,6 +15,7 @@ class Default_Model_Property extends Zend_Db_Table_Abstract implements Default_M
 	{
 		return array('Name', 'Definition');
 	}
+	
 }
 
 ?>

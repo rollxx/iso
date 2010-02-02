@@ -2,17 +2,18 @@
 
 class IndexController extends Zend_Controller_Action
 {
+	//TODO get namespace from bootloader?
 	private $modelPrefix = 'Default_Model_';
 	private $formPrefix = 'Default_Form_';
 	private $model = null;
 
 	public function listAction(){
-		$action= $this->modelPrefix.$this->model;
-		if (class_exists($action)) {
-			$modelInstance =new $action();
+		$activeModel= $this->modelPrefix.$this->model;
+		if (class_exists($activeModel, true)) {
+			$modelInstance =new $activeModel();
 			$this->setData($modelInstance, $modelInstance->getDependentTables());			
 		} else {
-			// throw exception
+			throw new Exception ('Model '.$activeModel.' does not exist.');
 		}
 	}
 	
@@ -20,14 +21,19 @@ class IndexController extends Zend_Controller_Action
 		$this->addValues($this->model);		
 	}
 	
-	public function deleteAction()
-	{
-		# code...
+	public function deleteAction(){
+		$activeModel= $this->modelPrefix.$this->model;
+		$id = $this->getRequest()->getParam('id');
+		if (class_exists($activeModel, true)) {
+			$modelInstance =new $activeModel();
+			$modelInstance->deleteValues($id);
+		} else {
+			throw new Exception ('Model '.$activeModel.' does not exist.');
+		}
 	}
 	
-	public function editAction()
-	{
-		# code...
+	public function editAction(){
+		$this->editValues($this->model);
 	}
 	
     public function init(){
@@ -46,8 +52,8 @@ class IndexController extends Zend_Controller_Action
 		$link = $this->view->url(array(
 			'module'=>'default', 
 			'controller'=>$this->getRequest()->getParam('controller'),
-			'action'=>$this->getRequest()->getParam('action'),
-			'add'=>'new',
+			'action'=>'add',
+			'model'=>$this->getRequest()->getParam('model'),
 			), '', true);
 			$this->view->placeholder('link')->append('<a href='.$link.'>Add new value</a>');
 	}
@@ -55,6 +61,9 @@ class IndexController extends Zend_Controller_Action
     private function addValues($name){
 		$formName = $this->formPrefix.$name;
 		$modelName = $this->modelPrefix.$name;
+		if (!class_exists($formName, true) || !class_exists($modelName, true)) {
+			throw new Exception('Invalid model specified.');
+		}
 		$form = new $formName();
         $request = $this->getRequest();
         if ($this->getRequest()->isPost()) {
@@ -71,5 +80,36 @@ class IndexController extends Zend_Controller_Action
 			$this->view->partial('partials/_form.phtml',
 				array('form' => $form)));
     }
+
+    private function editValues($name){
+		$request = $this->getRequest();
+		$id = $request->getParam('id');
+		$formName = $this->formPrefix.$name;
+		$modelName = $this->modelPrefix.$name;
+		if (!class_exists($formName, true) || !class_exists($modelName, true)) {
+			throw new Exception('Invalid model specified.');
+		}
+		$form = new $formName();
+		$model = new $modelName();
+
+        if ($request->isPost()) {
+            if ($form->isValid($request->getPost())) {
+                $model = new $modelName();
+				if (method_exists($model, 'updateOneRow'))
+					$model->updateOneRow($form->getValues());
+				// else
+					// $model->insert($form->getValues());
+                // return $this->_helper->redirector($this->getRequest()->getParam('action'));
+            }
+        }
+
+else {
+		$form->populate($model->fetchOneRow($id));
+		$this->view->placeholder('inputForm')->append(
+			$this->view->partial('partials/_form.phtml',
+				array('form' => $form)));
+    }
+}
+
 	
 }

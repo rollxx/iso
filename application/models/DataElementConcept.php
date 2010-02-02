@@ -1,7 +1,8 @@
 <?php
 
-class Default_Model_DataElementConcept extends Zend_Db_Table_Abstract  implements Default_Model_IsoModel{
+class Default_Model_DataElementConcept extends Default_Model_IsoModel{
 	protected $_name = 'de_concept';
+	protected $_primary = 'idDEC';
 	protected $_dependentTables = array(
 		'Default_Model_DataElement', 'Default_Model_ObjectClass', 'Default_Model_Property', 'Default_Model_ConceptualDomain'
 		);
