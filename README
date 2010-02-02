@@ -1,4 +1,9 @@
-Installation instructions
+Requirements:
+Apache+MySQL+PHP
+
+Installation instructions:
 
 1. copy or link Zend framework to library/Zend
-2. use the database from MOR (no changes needed)
+2. install database from MOR project (no changes needed. if you don't know what it is, ask Alex ;))
+3. modify configs/application.ini (modify resources.db.*)
+4. enjoy
