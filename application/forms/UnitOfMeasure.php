@@ -8,12 +8,9 @@ class Default_Form_UnitOfMeasure extends Default_Form_IsoForm
 	
 	function init()
 	{
+		parent::init();
 		$this->setMethod('post');
-		// $this->addElement('text', 'Name', array(
-		// 	            'label'      => 'Name:',
-		// 	            'required'   => true,
-		// 	            'filters'    => array('StringTrim')
-		// 		));
+		$this->addElement('hidden', 'UOM');
 		$this->addElement('text', 'description', array(
 		        'label'      => 'Description:',
 		        'filters'    => array('StringTrim')

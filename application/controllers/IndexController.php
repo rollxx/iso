@@ -59,57 +59,48 @@ class IndexController extends Zend_Controller_Action
 	}
 
     private function addValues($name){
-		$formName = $this->formPrefix.$name;
-		$modelName = $this->modelPrefix.$name;
-		if (!class_exists($formName, true) || !class_exists($modelName, true)) {
-			throw new Exception('Invalid model specified.');
-		}
-		$form = new $formName();
-        $request = $this->getRequest();
-        if ($this->getRequest()->isPost()) {
-            if ($form->isValid($request->getPost())) {
-                $model = new $modelName();
-				if (method_exists($model, 'save'))
-					$model->save($form->getValues());
+		$request = $this->getRequest();
+		$this->prepareForm($name);
+        if ($request->isPost()) {
+            if ($this->currentForm->isValid($request->getPost())) {
+				if (method_exists($this->currentModel, 'save'))
+					$this->currentModel->save($this->currentForm->getValues());
 				else
-					$model->insert($form->getValues());
-                return $this->_helper->redirector($this->getRequest()->getParam('action'));
+					$this->currentModel->insert($this->currentForm->getValues());
+                return $this->_helper->redirector->gotoSimple('list', null, null, array('model'=>$this->model));
             }
         }
 		$this->view->placeholder('inputForm')->append(
 			$this->view->partial('partials/_form.phtml',
-				array('form' => $form)));
+				array('form' => $this->currentForm)));
     }
 
     private function editValues($name){
 		$request = $this->getRequest();
-		$id = $request->getParam('id');
-		$formName = $this->formPrefix.$name;
-		$modelName = $this->modelPrefix.$name;
-		if (!class_exists($formName, true) || !class_exists($modelName, true)) {
-			throw new Exception('Invalid model specified.');
-		}
-		$form = new $formName();
-		$model = new $modelName();
-
+		$this->prepareForm($name);
         if ($request->isPost()) {
-            if ($form->isValid($request->getPost())) {
-                $model = new $modelName();
-				if (method_exists($model, 'updateOneRow'))
-					$model->updateOneRow($form->getValues());
-				// else
-					// $model->insert($form->getValues());
-                // return $this->_helper->redirector($this->getRequest()->getParam('action'));
+            if ($this->currentForm->isValid($request->getPost())) {
+				if (method_exists($this->currentModel, 'updateOneRow'))
+					$this->currentModel->updateOneRow($this->currentForm->getValues());
             }
         }
+		else {
+			$id = $request->getParam('id');
+			$this->currentForm->populate($this->currentModel->fetchOneRow($id));
+			$this->view->placeholder('inputForm')->append(
+				$this->view->partial('partials/_form.phtml',
+					array('form' => $this->currentForm)));
+    		}
+	}
 
-else {
-		$form->populate($model->fetchOneRow($id));
-		$this->view->placeholder('inputForm')->append(
-			$this->view->partial('partials/_form.phtml',
-				array('form' => $form)));
-    }
-}
+	private function prepareForm($name){
+		$formName = $this->formPrefix.$name;
+		$modelName = $this->modelPrefix.$name;
+		if (!class_exists($formName, true) || !class_exists($modelName, true))
+			throw new Exception('Invalid model specified.');
+		$this->currentForm = new $formName();
+		$this->currentModel = new $modelName();
+		
+	}
 
-	
 }

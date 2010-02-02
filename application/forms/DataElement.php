@@ -7,11 +7,9 @@ class Default_Form_DataElement extends Default_Form_IsoForm
 {
 	public function init()
 	{
+		parent::init();
 		$this->setMethod('post');
-		$this->addElement('text', 'idDE', array(
-				'label' => 'ID',
-				'readonly' => true,
-				));
+		$this->addElement('hidden', 'idDE');
 		$this->addElement('text', 'Name', array(
 	            'label'      => 'Name:',
 	            'required'   => true,

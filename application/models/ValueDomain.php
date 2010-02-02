@@ -25,7 +25,7 @@ class Default_Model_ValueDomain extends Default_Model_IsoModel {
 
 	public function getVisibleColumns()
 	{
-		return array('Name', 'Data_type');
+		return array('Name', 'Data_type', 'Precision');
 	}
 		
 }

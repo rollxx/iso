@@ -8,7 +8,9 @@ class Default_Form_ConceptualDomain extends Default_Form_IsoForm
 	
 	function init()
 	{
+		parent::init();
 		$this->setMethod('post');
+		$this->addElement('hidden', 'idCD');
 		$this->addElement('text', 'Name', array(
 	            'label'      => 'Name:',
 	            'required'   => true,
@@ -23,6 +25,7 @@ class Default_Form_ConceptualDomain extends Default_Form_IsoForm
 			            'label'    => 'Add Values',
 						'order'		=> 10
 			        ));
+		parent::init();
 	// decoration caused issues when saving values
 		// $this->addDisplayGroup(array('cdName', 'idDim', 'submit'), 'Conceptual Domain', array('legend' => 'Conceptual Domain'));
 	}
