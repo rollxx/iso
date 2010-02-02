@@ -9,81 +9,126 @@
 		<ConceptualDomain>
 			<label>Conceptual Domain</label>
 			<controller>Index</controller>
-			<action>conceptual-domain</action>
+			<action>list</action>
+			<params>
+				<model>ConceptualDomain</model>
+			</params>
 			<pages>
 				<EnumeratedConceptualDomain>
 					<label>Enumerated Conceptual Domain</label>
 					<controller>Index</controller>
-					<action>Enumerated-Conceptual-Domain</action>
+					<action>list</action>
+					<params>
+						<model>EnumeratedConceptualDomain</model>
+					</params>
 				</EnumeratedConceptualDomain>
 				<NonEnumeratedConceptualDomain>
 					<label>Non Enumerated Conceptual Domain</label>
 					<controller>Index</controller>
-					<action>Non-Enumerated-Conceptual-Domain</action>
+					<action>list</action>
+					<params>
+						<model>NonEnumeratedConceptualDomain</model>
+					</params>
 				</NonEnumeratedConceptualDomain>								
 			</pages>
 		</ConceptualDomain>
 		<DataElementConcept>
 			<label>Data Element Concept</label>
 			<controller>Index</controller>
-			<action>data-element-concept</action>
+			<action>list</action>
+			<params>
+				<model>DataElementConcept</model>
+			</params>
 		</DataElementConcept>
 		<DataElement>
 			<label>Data Element</label>
 			<controller>Index</controller>
-			<action>Data-Element</action>
+			<action>list</action>
+			<params>
+				<model>DataElement</model>
+			</params>
 		</DataElement>
 		<Dimensionality>
 			<label>Dimensionality</label>
 			<controller>Index</controller>
-			<action>dimensionality</action>
+			<action>list</action>
+			<params>
+				<model>Dimensionality</model>
+			</params>
 		</Dimensionality>
 		<ObjectClass>
 			<label>Object Class</label>
 			<controller>Index</controller>
-			<action>Object-Class</action>
+			<action>list</action>
+			<params>
+				<model>ObjectClass</model>
+			</params>
 		</ObjectClass>
 		<PermissibleValue>
 			<label>Permissible Value</label>
 			<controller>Index</controller>
-			<action>Permissible-Value</action>
+			<action>list</action>
+			<params>
+				<model>PermissibleValue</model>
+			</params>
 		</PermissibleValue>
 		<Property>
 			<label>Property</label>
 			<controller>Index</controller>
-			<action>Property</action>
+			<action>list</action>
+			<params>
+				<model>Property</model>
+			</params>
 		</Property>
 		<UnitOfMeasure>
 			<label>Unit Of Measure</label>
 			<controller>Index</controller>
-			<action>Unit-Of-Measure</action>
+			<action>list</action>
+			<params>
+				<model>UnitOfMeasure</model>
+			</params>
 		</UnitOfMeasure>
 		<Value>
 			<label>Value</label>
 			<controller>Index</controller>
-			<action>Value</action>
+			<action>list</action>
+			<params>
+				<model>Value</model>
+			</params>
 		</Value>
 		<ValueDomain>
 			<label>Value Domain</label>
 			<controller>Index</controller>
-			<action>value-domain</action>
+			<action>list</action>
+			<params>
+				<model>ValueDomain</model>
+			</params>
 			<pages>
 				<EnumeratedValueDomain>
 					<label>Enumerated Value Domain</label>
 					<controller>Index</controller>
-					<action>Enumerated-Value-Domain</action>
+					<action>list</action>
+					<params>
+						<model>EnumeratedValueDomain</model>
+					</params>
 				</EnumeratedValueDomain>
 				<NonEnumeratedValueDomain>
 					<label>Non Enumerated Value Domain</label>
 					<controller>Index</controller>
-					<action>Non-Enumerated-Value-Domain</action>
+					<action>list</action>
+					<params>
+						<model>NonEnumeratedValueDomain</model>
+					</params>
 				</NonEnumeratedValueDomain>
 			</pages>
 		</ValueDomain>
 		<ValueMeaning>
 			<label>Value Meaning</label>
 			<controller>Index</controller>
-			<action>value-meaning</action>
+			<action>list</action>
+			<params>
+				<model>ValueMeaning</model>
+			</params>
 		</ValueMeaning>
 	</nav>
 </configData>

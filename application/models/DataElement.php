@@ -11,7 +11,11 @@ class Default_Model_DataElement extends Zend_Db_Table_Abstract implements Defaul
 		'Default_Model_ValueDomain' => array(
 			'columns'=>array('idVD'),
 			'refTableClass'=>'Default_Model_ValueDomain',
-			'refColumns'=>array('idVD'))
+			'refColumns'=>array('idVD')),
+		'Default_Model_NonEnumeratedValueDomain' => array(
+			'columns'=>array('idVD'),
+			'refTableClass'=>'Default_Model_NonEnumeratedValueDomain',
+			'refColumns'=>array('idNEVD'))
 		);
 
 	public function getVisibleColumns()

@@ -8,10 +8,6 @@ class Default_Model_ValueDomain extends Zend_Db_Table_Abstract implements Defaul
 			'columns'=>array('idUOM'),
 			'refTableClass'=>'Default_Model_UnitOfMeasure',
 			'refColumns'=>array('idUOM')),
-		'Default_Model_ConceptualDomain' => array(
-			'columns'=>array('idCD'),
-			'refTableClass'=>'Default_Model_ConceptualDomain',
-			'refColumns'=>array('idCD')),
 		'Default_Model_DataElement' => array(
 			'columns'=>array('idVD'),
 			'refTableClass'=>'Default_Model_DataElement',

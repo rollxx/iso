@@ -2,7 +2,7 @@
 
 class Default_Model_ConceptualDomain extends Zend_Db_Table_Abstract implements Default_Model_IsoModel{
 	protected $_name = 'conceptual_domain';
-	protected $_dependentTables = array('Default_Model_DataElementConcept', 'Default_Model_ValueDomain');
+	protected $_dependentTables = array('Default_Model_Dimensionality');
 	protected $_referenceMap = array(
 		'Default_Model_Dimensionality' => array(
 			'columns'=>array('idDim'),
