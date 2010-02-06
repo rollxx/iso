@@ -21,7 +21,7 @@ class Default_Form_UnitOfMeasure extends Default_Form_IsoForm
 		$this->addElement($dim);
 		$this->addElement('submit', 'submit', array(
 	            'ignore'   => true,
-	            'label'    => 'Add Values',
+	            'label'    => 'Add Unit of Measure',
 	        ));
 	}
 }

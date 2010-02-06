@@ -10,10 +10,9 @@ class Default_Model_Value extends Default_Model_IsoModel {
 			'refColumns'=>'idValue')
 			);
 
-		public function getVisibleColumns()
-		{
-			return array('Value');
-		}
+	public function getVisibleColumns(){
+		return array('Value');
+	}
 
 }
 

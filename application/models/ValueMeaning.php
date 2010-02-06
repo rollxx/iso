@@ -10,8 +10,7 @@ class Default_Model_ValueMeaning extends Default_Model_IsoModel {
 			'refColumns'=>'idVM')
 			);
 
-	public function getVisibleColumns()
-	{
+	public function getVisibleColumns(){
 		return array('Meaning');
 	}
 

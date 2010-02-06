@@ -22,7 +22,7 @@ class Default_Form_ConceptualDomain extends Default_Form_IsoForm
 		$this->addElement($dim);
 		$this->addElement('submit', 'submit', array(
 			            'ignore'   => true,
-			            'label'    => 'Add Values',
+			            'label'    => 'Add Conceptual Domain',
 						'order'		=> 10
 			        ));
 		parent::init();

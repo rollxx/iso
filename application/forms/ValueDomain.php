@@ -35,7 +35,7 @@ class Default_Form_ValueDomain extends Default_Form_IsoForm
 		$this->addElement($uom);
 		$this->addElement('submit', 'submit', array(
 		        'ignore'   => true,
-		        'label'    => 'Add Values',
+		        'label'    => 'Add Value Domain',
 				'order'    => 10,
 		    ));
 	}

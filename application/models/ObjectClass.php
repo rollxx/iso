@@ -11,9 +11,8 @@ class Default_Model_ObjectClass extends Default_Model_IsoModel {
 			'refColumns'=>'idOC')
 			);
 
-	public function getVisibleColumns()
-	{
-		return array('Name', 'Definition');
+	public function getVisibleColumns($short = false) {
+		return $short?array('Name'):array('Name', 'Definition');
 	}	
 }
 ?>

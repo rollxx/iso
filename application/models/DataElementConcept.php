@@ -4,7 +4,8 @@ class Default_Model_DataElementConcept extends Default_Model_IsoModel{
 	protected $_name = 'de_concept';
 	protected $_primary = 'idDEC';
 	protected $_dependentTables = array(
-		'Default_Model_DataElement', 'Default_Model_ObjectClass', 'Default_Model_Property', 'Default_Model_ConceptualDomain'
+		//'Default_Model_DataElement', 
+		'Default_Model_ObjectClass', 'Default_Model_Property', 'Default_Model_ConceptualDomain'
 		);
 	protected $_referenceMap = array(
 		'Default_Model_ObjectClass' => array(
@@ -24,10 +25,13 @@ class Default_Model_DataElementConcept extends Default_Model_IsoModel{
 			'refTableClass'=>'Default_Model_NonEnumeratedConceptualDomain',
 			'refColumns'=>array('idNECD')),			
 			);
-			
-	public function getVisibleColumns()
-	{
-		return array('Name', 'Definition');
+
+	public function getVisibleColumns($short = false){
+		return $short?array('Name'):array('Name', 'Definition');
+	}
+	
+	public function getPrintableArray($short=true) {
+		return parent::getPrintableArray($short);
 	}
 			
 }

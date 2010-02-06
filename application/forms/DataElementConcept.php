@@ -37,7 +37,7 @@ class Default_Form_DataElementConcept extends Default_Form_IsoForm
 		
 		$this->addElement('submit', 'submit', array(
 		        'ignore'   => true,
-		        'label'    => 'Add Values',
+		        'label'    => 'Add Data Element Concept',
 		    ));
 	}
 }

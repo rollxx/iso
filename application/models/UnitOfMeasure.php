@@ -10,10 +10,11 @@ class Default_Model_UnitOfMeasure extends Default_Model_IsoModel {
 			'refTableClass'=>'Default_Model_ValueDomain',
 			'refColumns'=>array('idUOM')),
 		);
-	public function getVisibleColumns()
-	{
+
+	public function getVisibleColumns($short = false){
 		return array('Description');
 	}
+	
 }
 
 ?>

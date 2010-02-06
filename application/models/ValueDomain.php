@@ -23,9 +23,8 @@ class Default_Model_ValueDomain extends Default_Model_IsoModel {
 			'refColumns'=>array('idNEVD')),			
 			);
 
-	public function getVisibleColumns()
-	{
-		return array('Name', 'Data_type', 'Precision');
+	public function getVisibleColumns($short=false){
+		return $short?array('Name'):array('Name', 'Data_type', 'Precision');
 	}
 		
 }

@@ -29,7 +29,7 @@ class Default_Form_DataElement extends Default_Form_IsoForm
 		$this->addElement($vm);
 		$this->addElement('submit', 'submit', array(
 	            'ignore'   => true,
-	            'label'    => 'Add Values',
+	            'label'    => 'Add Data Element',
 	        ));
 	}
 }

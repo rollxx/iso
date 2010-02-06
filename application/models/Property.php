@@ -11,11 +11,10 @@ class Default_Model_Property extends Default_Model_IsoModel {
 			'refColumns'=>'idP')
 			);
 
-	public function getVisibleColumns()
-	{
-		return array('Name', 'Definition');
+	public function getVisibleColumns($short = false){
+		return $short?array('Name'):array('Name', 'Definition');
 	}
-	
+
 }
 
 ?>
