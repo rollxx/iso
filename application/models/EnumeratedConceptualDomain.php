@@ -4,9 +4,9 @@ class Default_Model_EnumeratedConceptualDomain extends Default_Model_ConceptualD
 	protected $_name = 'enumerated_cd';
 	protected $_primary = 'idECD';
 	protected $_dependentTables = array('Default_Model_ConceptualDomain');
-
-	public function getVisibleColumns()
-	{
+	protected $_includedModels = array('Default_Model_ConceptualDomain', 'Default_Model_Dimensionality');
+	
+	public function getVisibleColumns(){
 		return array();
 	}
 	
@@ -19,7 +19,7 @@ class Default_Model_EnumeratedConceptualDomain extends Default_Model_ConceptualD
 		foreach ($value['idVM'] as $key => $v)
 			$ecdvm->insert(array('idECD'=>$id, 'idVM'=>$v));			
 	}
-
+	
 }
 
 ?>

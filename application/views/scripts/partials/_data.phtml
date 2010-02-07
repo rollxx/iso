@@ -1,14 +1,17 @@
-<table border="1">
-	<tr>
+<table>
+	<caption><?= $this->caption  ?></caption>
+	<tr><thead>
 		<?php
 		$value = $this->data[0];
 			foreach ($value as $key => $value) {
 				echo "<th>".$key."</th>";}
 		?>
-	</tr>
-	<tr>
+	</tr></thead>
+	
 		<?php
+		$x=0;
 		foreach ($this->data as $key => $value) {
+			echo "<tr".($x++%2?" class=\"even\">":">");
 			foreach ($value as $key => $value) {
 				echo "<td>".$value."</td>";
 			}

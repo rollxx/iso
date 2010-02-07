@@ -46,9 +46,14 @@ class IndexController extends Zend_Controller_Action
 
 	private function setData($model){
 		$data = $model->fetchAll();
-		// var_dump($data->toArray());
+		$editURL = $this->view->url(array(
+			'module'=>'default', 
+			'controller'=>$this->getRequest()->getParam('controller'),
+			'action'=>'edit',
+			'model'=>$this->model
+			), '', true);
 		$this->view->placeholder('dataGrid')->append(
-			$this->view->partial('partials/_data.phtml', array('data' => $model->getPrintableArray())));
+			$this->view->partial('partials/_data.phtml', array('data' => $model->getPrintableArray(), 'editURL'=>$editURL, 'caption'=>$this->model)));
 		$link = $this->view->url(array(
 			'module'=>'default', 
 			'controller'=>$this->getRequest()->getParam('controller'),

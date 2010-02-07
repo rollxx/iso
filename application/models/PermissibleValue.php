@@ -11,10 +11,9 @@ class Default_Model_PermissibleValue extends Default_Model_IsoModel {
 			'refColumns'=>'idPV')
 			);
 
-		public function getVisibleColumns()
-		{
-			return array();
-		}
+	public function getVisibleColumns(){
+		return array();
+	}
 }
 
 ?>

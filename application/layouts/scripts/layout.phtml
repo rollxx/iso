@@ -15,10 +15,10 @@ echo $this->doctype() ?>
 <? $this->render('header.phtml') ?>
 
 <div id="content" class='container showgrid'>
-	<div class='push+1 span-5 navigation'>
+	<div class='span-4 navigation small'>
 		<?= $this->navigation()->menu(); ?>
 	</div>
-	<div class='push+1 span-18 maincontent'>
+	<div class='span-18 maincontent'>
 		<?= $this->layout()->content ?>		
 	</div>
 </div>

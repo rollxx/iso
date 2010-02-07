@@ -27,10 +27,33 @@ class Default_Model_ConceptualDomain extends Default_Model_IsoModel{
 			'refColumns'=>array('idCD')),
 			);
 
-	public function getVisibleColumns()
-	{
+	public function getVisibleColumns(){
 		return array('Name');
 	}
+	
+	public function getPrintableArray($short=true) {
+		$rows = $this->fetchAll();
+		$retval = $this->getShortPrintableArray($rows, $short);
+		$depTables = $this->getDependentTables();
+		$i=0;
+		foreach ($rows as $row) {
+			foreach ($depTables as $entry) {
+				$dep = $row->findDependentRowset($entry)->current();
+				$this->getColumnValues($dep, $i, $short, &$retval);
+					$depNextLevel = new $entry();
+					$depL1 = $depNextLevel->getDependentTables();
+					foreach ($depL1 as $depEntry) {
+						if (in_array($depEntry, $this->_includedModels)) {
+							$depVal = $dep->findDependentRowset($depEntry)->current();
+							$this->getColumnValues($depVal, $i, true, &$retval);
+						}
+					}
+			}
+			$i++;
+		}
+		return $retval;
+	}
+	
 	
 }
 

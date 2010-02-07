@@ -14,8 +14,7 @@ class Default_Model_Dimensionality extends Default_Model_IsoModel{
 			'refColumns'=>'idDim')
 			);
 
-	public function getVisibleColumns()
-	{
+	public function getVisibleColumns(){
 		return array('Description');
 	}
 	
