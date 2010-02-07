@@ -1,5 +1,5 @@
 <table>
-	<caption><?= $this->caption  ?></caption>
+	<caption class="loud"><?= $this->caption  ?></caption>
 	<tr><thead>
 		<?php
 		$value = $this->data[0];
@@ -12,8 +12,13 @@
 		$x=0;
 		foreach ($this->data as $key => $value) {
 			echo "<tr".($x++%2?" class=\"even\">":">");
+			$i=0;
 			foreach ($value as $key => $value) {
-				echo "<td>".$value."</td>";
+				echo "<td>";
+				if (!$i++) {
+					echo '<a href="'.$this->editURL.'/id/'.$value.'">'.$value.'</a>';
+				} else echo $value;
+				echo "</td>";
 			}
 			echo "</tr>";
 		}

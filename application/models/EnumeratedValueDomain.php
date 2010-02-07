@@ -15,15 +15,31 @@ class Default_Model_EnumeratedValueDomain extends Default_Model_ValueDomain {
 		return array();
 	}
 	
+	public function updateOneRow($data){
+		$parentModel = new Default_Model_ValueDomain();
+		$parentModel->updateOneRow($data);
+		// $parentWhere = $this->getAdapter()->quoteInto('idVD = ?', $data['idVD']);
+		// $id=$parentModel->update(array('Name' =>$data['Name'], 'Data_type' => $data['Data_type'], 'Precision' => $data['Precision'], 'idCD' => $data['idCD'], 'idUOM' => $data['idUOM']), $parentWhere);
+		// $where = $this->getAdapter()->quoteInto('idEVD = ?', $data['idVD']);
+		// $this->update($data[$this->_primary], $where);
+	}
+	
 	public function save($value){
 		$parentModel = new Default_Model_ValueDomain();
-		$id=$parentModel->insert(array('Name' =>$value['Name'], 'Data_Type' => $value['Data_Type'], 'Precision' => $value['Precision'], 'idCD' => $value['idCD'], 'idUOM' => $value['idUOM']));
+		$id=$parentModel->insert(array('Name' =>$value['Name'], 'Data_type' => $value['Data_type'], 'Precision' => $value['Precision'], 'idCD' => $value['idCD'], 'idUOM' => $value['idUOM']));
 		$this->insert(array('idEVD'=>$id));
 	}
 
 	public function getPrintableArray(){
 		return parent::getPrintableArray(true);
 	}
+
+	public function fetchOneRow($id){
+		$where = $this->getAdapter()->quoteInto($this->_primary . ' = ?', $id);
+		$myRow = $this->fetchRow($where);
+		return array_merge($myRow->toArray(), $myRow->findDependentRowset($this->_dependentTables[0])->current()->toArray());
+	}
+
 }
 
 ?>

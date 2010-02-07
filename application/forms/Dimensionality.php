@@ -11,16 +11,11 @@ class Default_Form_Dimensionality extends Default_Form_IsoForm
 		parent::init();
 		$this->setMethod('post');
 		$this->addElement('hidden', 'idDim');
-		$this->addElement('text', 'Description', array(
-	            'label'      => 'Description:',
-	            'required'   => true,
-	            'filters'    => array('StringTrim')
-				));
-		$this->addElement('submit', 'submit', array(
-	            'ignore'   => true,
-	            'label'    => 'Add Dimensionality',
-	        ));
-	
+		$descr = new Zend_Form_Element_Textarea('description');
+		$descr	->setLabel('Description:')
+				->addFilters(array('StringTrim'))
+				->setDecorators($this->decorators);
+		$this->addElement($descr);
 	}
 	
 }

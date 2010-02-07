@@ -19,6 +19,14 @@ class Default_Model_EnumeratedConceptualDomain extends Default_Model_ConceptualD
 		foreach ($value['idVM'] as $key => $v)
 			$ecdvm->insert(array('idECD'=>$id, 'idVM'=>$v));			
 	}
+
+	public function fetchOneRow($id){
+		$where = $this->getAdapter()->quoteInto($this->_primary . ' = ?', $id);
+		$myRow = $this->fetchRow($where);
+		return array_merge($myRow->toArray(), $myRow->findDependentRowset($this->_dependentTables[0])->current()->toArray());
+	}
+
+
 	
 }
 

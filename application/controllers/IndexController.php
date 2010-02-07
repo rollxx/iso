@@ -64,6 +64,7 @@ class IndexController extends Zend_Controller_Action
 	}
 
     private function addValues($name){
+		$this->view->formResponse = '';
 		$request = $this->getRequest();
 		$this->prepareForm($name);
         if ($request->isPost()) {
@@ -72,15 +73,17 @@ class IndexController extends Zend_Controller_Action
 					$this->currentModel->save($this->currentForm->getValues());
 				else
 					$this->currentModel->insert($this->currentForm->getValues());
-                return $this->_helper->redirector->gotoSimple('list', null, null, array('model'=>$this->model));
+				$this->view->formResponse='<div class="success">Values added</div>';
+				$this->form=$this->prepareForm($name);
+                // return $this->_helper->redirector->gotoSimple('list', null, null, array('model'=>$this->model));
             }
+			else {$this->view->formResponse='<div class="error">Sorry, there was a problem with your submission. Please check the following:</div>';}
         }
-		$this->view->placeholder('inputForm')->append(
-			$this->view->partial('partials/_form.phtml',
-				array('form' => $this->currentForm)));
+		$this->view->form = $this->currentForm;
     }
 
     private function editValues($name){
+		$this->view->formResponse = '';
 		$request = $this->getRequest();
 		$this->prepareForm($name);
         if ($request->isPost()) {
@@ -88,14 +91,17 @@ class IndexController extends Zend_Controller_Action
 				if (method_exists($this->currentModel, 'updateOneRow'))
 					$this->currentModel->updateOneRow($this->currentForm->getValues());
             }
+ 			else {
+				$this->view->formResponse='<div class="error">Sorry, there was a problem with your submission. Please check the following:</div>';
+				$this->view->form = $this->currentForm;
+				return;
+				}
 			return $this->_helper->redirector->gotoSimple('list', null, null, array('model'=>$this->model));
         }
 		else {
 			$id = $request->getParam('id');
 			$this->currentForm->populate($this->currentModel->fetchOneRow($id));
-			$this->view->placeholder('inputForm')->append(
-				$this->view->partial('partials/_form.phtml',
-					array('form' => $this->currentForm)));
+			$this->view->form = $this->currentForm;
     		}
 	}
 

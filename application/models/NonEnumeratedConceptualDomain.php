@@ -13,7 +13,22 @@ class Default_Model_NonEnumeratedConceptualDomain extends Default_Model_Conceptu
 	public function save($value){
 		$parentModel = new Default_Model_ConceptualDomain();
 		$id=$parentModel->insert(array('Name' =>$value['Name'], 'idDim' => $value['idDim']));
-		$this->insert(array('idNECD'=>$id, 'description'=>$value['description']));
+		$this->insert(array('idNECD'=>$id, 'Description'=>$value['Description']));
+	}
+
+	public function fetchOneRow($id){
+		$where = $this->getAdapter()->quoteInto($this->_primary . ' = ?', $id);
+		$myRow = $this->fetchRow($where);
+		return array_merge($myRow->toArray(), $myRow->findDependentRowset($this->_dependentTables[0])->current()->toArray());
+	}
+
+	public function updateOneRow($data){
+		$parentModel = new Default_Model_ConceptualDomain();
+		$where = $this->getAdapter()->quoteInto($this->_primary . ' = ?', $data['idNECD']);
+		$this->update(array('Description' => $data['Description']), $where);
+		unset($data['Description']);
+		unset($data['idNECD']);
+		$parentModel->updateOneRow($data);
 	}
 
 

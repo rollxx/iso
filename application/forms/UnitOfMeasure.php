@@ -10,19 +10,20 @@ class Default_Form_UnitOfMeasure extends Default_Form_IsoForm
 	{
 		parent::init();
 		$this->setMethod('post');
+
 		$this->addElement('hidden', 'UOM');
-		$this->addElement('text', 'description', array(
-		        'label'      => 'Description:',
-		        'filters'    => array('StringTrim')
-				));
+
+		$descr = new Zend_Form_Element_Textarea('Description');
+		$descr	->setLabel('Description:')
+				->addFilters(array('StringTrim'))
+				->setDecorators($this->decorators);
+		$this->addElement($descr);
+
 		$dim = new Zend_Form_Element_Select('idDim');
 		$dim -> setLabel('Dimensionality:')
-			-> addMultiOptions($this->_getDependentSelect('Default_Model_Dimensionality'));
+			-> addMultiOptions($this->_getDependentSelect('Default_Model_Dimensionality'))
+			->setDecorators($this->decorators);
 		$this->addElement($dim);
-		$this->addElement('submit', 'submit', array(
-	            'ignore'   => true,
-	            'label'    => 'Add Unit of Measure',
-	        ));
 	}
 }
 ?>

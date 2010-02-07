@@ -13,19 +13,14 @@ echo $this->doctype() ?>
 </head> 
 <body>
 <? $this->render('header.phtml') ?>
-
-<div id="content" class='container showgrid'>
-	<div class='span-4 navigation small'>
+<div id="content" class='container'>
+	<div class='span-5 navigation'>
 		<?= $this->navigation()->menu(); ?>
 	</div>
 	<div class='span-18 maincontent'>
 		<?= $this->layout()->content ?>		
 	</div>
 </div>
-
-
-
 <? $this->render('footer.phtml') ?>
-
 </body>
 </html>

@@ -11,16 +11,13 @@ class Default_Form_ValueMeaning extends Default_Form_IsoForm
 		parent::init();
 		$this->setMethod('post');
 		$this->addElement('hidden', 'idVM');
-		$this->addElement('text', 'Meaning', array(
-	            'label'      => 'Meaning:',
-	            'required'   => true,
-	            'filters'    => array('StringTrim')
-				));
-		$this->addElement('submit', 'submit', array(
-	            'ignore'   => true,
-	            'label'    => 'Add Value Meaning',
-	        ));
-	
+
+		$meaning = new Zend_Form_Element_Text('Meaning');
+		$meaning	->setLabel('Meaning:')
+				->setRequired(true)
+				->addFilters(array('StringTrim'))
+				->setDecorators($this->decorators);
+		$this->addElement($meaning);
 	}
 }
 

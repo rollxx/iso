@@ -6,39 +6,43 @@
 class Default_Form_DataElementConcept extends Default_Form_IsoForm
 {
 	public function init()
-	{
+	{	
 		parent::init();
 		$this->setMethod('post');
+		
 		$this->addElement('hidden', 'idDEC');
-		$this->addElement('text', 'Name', array(
-	            'label'      => 'Name:',
-	            'required'   => true,
-	            'filters'    => array('StringTrim')
-				));
-		$this->addElement('textarea', 'Definition', array(
-		        'label'      => 'Definition:',
-		        'filters'    => array('StringTrim')
-				));
+		
+		$name = new Zend_Form_Element_Text('Name');
+		$name	->setLabel('Name:')
+				->setRequired(true)
+				->addFilters(array('StringTrim'))
+				->setDecorators($this->decorators);
+		$this->addElement($name);
+
+		$definition = new Zend_Form_Element_TextArea('Definition');
+		$definition	->setLabel('Definition:')
+				->addFilters(array('StringTrim'))
+				->setDecorators($this->decorators);
+		$this->addElement($definition);
 
 		$oc = new Zend_Form_Element_Select('idOC');
 		$oc -> setLabel('Object Class:')
-			-> addMultiOptions($this->_getDependentSelect('Default_Model_ObjectClass'));
+			-> addMultiOptions($this->_getDependentSelect('Default_Model_ObjectClass'))
+			->setDecorators($this->decorators);
 		$this->addElement($oc);
 			
 		$p = new Zend_Form_Element_Select('idP');
 		$p -> setLabel('Property:')
-			-> addMultiOptions($this->_getDependentSelect('Default_Model_Property'));
+			-> addMultiOptions($this->_getDependentSelect('Default_Model_Property'))
+			->setDecorators($this->decorators);
 		$this->addElement($p);
 
 		$cd = new Zend_Form_Element_Select('idCD');
 		$cd -> setLabel('Conceptual Domain:')
-			-> addMultiOptions($this->_getDependentSelect('Default_Model_ConceptualDomain'));
+			-> addMultiOptions($this->_getDependentSelect('Default_Model_ConceptualDomain'))
+			->setDecorators($this->decorators);
 		$this->addElement($cd);
 		
-		$this->addElement('submit', 'submit', array(
-		        'ignore'   => true,
-		        'label'    => 'Add Data Element Concept',
-		    ));
 	}
 }
 ?>

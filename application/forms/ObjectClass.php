@@ -10,21 +10,21 @@ class Default_Form_ObjectClass extends Default_Form_IsoForm
 	{
 		parent::init();
 		$this->setMethod('post');
+		
 		$this->addElement('hidden', 'idOC');
-		$this->addElement('text', 'Name', array(
-	            'label'      => 'Name:',
-	            'required'   => true,
-	            'filters'    => array('StringTrim')
-				));
-		$this->addElement('textarea', 'Definition', array(
-		        'label'      => 'Definition:',
-		        'filters'    => array('StringTrim')
-				));
-		$this->addElement('submit', 'submit', array(
-	            'ignore'   => true,
-	            'label'    => 'Add Object Class',
-	        ));
-	
+		
+		$name = new Zend_Form_Element_Text('Name');
+		$name	->setLabel('Name:')
+				->setRequired(true)
+				->addFilters(array('StringTrim'))
+				->setDecorators($this->decorators);
+		$this->addElement($name);
+
+		$definition = new Zend_Form_Element_TextArea('Definition');
+		$definition	->setLabel('Definition:')
+				->addFilters(array('StringTrim'))
+				->setDecorators($this->decorators);
+		$this->addElement($definition);
 	}
 }
 
