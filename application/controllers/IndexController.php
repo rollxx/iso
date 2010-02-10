@@ -26,8 +26,14 @@ class IndexController extends Zend_Controller_Action
 		$id = $this->getRequest()->getParam('id');
 		if ($id && class_exists($activeModel, true)) {
 			$modelInstance =new $activeModel();
-			$message = $modelInstance->deleteValues($id)?'successfully deleted values':'Problem deleting values for id = '.$id.' in Model '.$activeModel.'.';
-			var_dump($message);
+			$message = $modelInstance->deleteValues($id)?'<div class="success">successfully deleted values</div>':'<div class="error">Problem deleting values for id = '.$id.' in '.$this->model.'.</div>';
+			$this->view->actionResponse=$message;
+			$this->view->backLink = $this->view->url(array(
+				'module'=>'default', 
+				'controller'=>$this->getRequest()->getParam('controller'),
+				'action'=>'list',
+				'model'=>$this->model
+				), '', true);
 		} else {
 			throw new Exception ('Problem deleting values for id = '.$id.' in Model '.$activeModel.'.');
 		}
@@ -52,8 +58,14 @@ class IndexController extends Zend_Controller_Action
 			'action'=>'edit',
 			'model'=>$this->model
 			), '', true);
+		$deleteURL = $this->view->url(array(
+			'module'=>'default', 
+			'controller'=>$this->getRequest()->getParam('controller'),
+			'action'=>'delete',
+			'model'=>$this->model
+			), '', true);
 		$this->view->placeholder('dataGrid')->append(
-			$this->view->partial('partials/_data.phtml', array('data' => $model->getPrintableArray(), 'editURL'=>$editURL, 'caption'=>$this->model)));
+			$this->view->partial('partials/_data.phtml', array('data' => $model->getPrintableArray(), 'editURL'=>$editURL, 'deleteURL' =>$deleteURL, 'caption'=>$this->model)));
 		$link = $this->view->url(array(
 			'module'=>'default', 
 			'controller'=>$this->getRequest()->getParam('controller'),

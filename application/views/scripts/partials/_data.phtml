@@ -6,6 +6,7 @@
 			foreach ($value as $key => $value) {
 				echo "<th>".$key."</th>";}
 		?>
+		<th>delete?</th>
 	</tr></thead>
 	
 		<?php
@@ -13,14 +14,16 @@
 		foreach ($this->data as $key => $value) {
 			echo "<tr".($x++%2?" class=\"even\">":">");
 			$i=0;
+			$id=0;
 			foreach ($value as $key => $value) {
 				echo "<td>";
 				if (!$i++) {
+					$id = $value;
 					echo '<a href="'.$this->editURL.'/id/'.$value.'">'.$value.'</a>';
 				} else echo $value;
 				echo "</td>";
 			}
-			echo "</tr>";
+			echo '<td><a href="'.$this->deleteURL.'/id/'.$id.'">delete</a></tr>';
 		}
 		?>
 </table>

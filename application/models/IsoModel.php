@@ -6,7 +6,13 @@ abstract class Default_Model_IsoModel extends Zend_Db_Table_Abstract {
 	
 	public function deleteValues($id){
 		$where = $this->getAdapter()->quoteInto($this->_primary . ' = ?', $id);
-		return $this->delete($where);
+		$retval = 0;
+		try {
+			$retval = $this->delete($where);
+		} catch (Exception $e) {
+			$retval = 0;
+		}
+		return $retval;
 	}
 	
 	public function fetchOneRow($id){
