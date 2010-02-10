@@ -5,5 +5,6 @@ Installation instructions:
 
 1. copy or link Zend framework to library/Zend
 2. install database from MOR project (no changes needed. if you don't know what it is, ask Alex ;))
+2.5. You can use the mysql dump application/scripts/iso11179.sql
 3. modify configs/application.ini (modify resources.db.*)
 4. enjoy

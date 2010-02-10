@@ -3,7 +3,7 @@
 # http://code.google.com/p/sequel-pro
 #
 # Host: localhost (MySQL 5.1.37)
-# Database: iso11179test
+# Database: iso11179
 # Generation Time: 2010-02-10 20:06:35 +0100
 # ************************************************************
 
