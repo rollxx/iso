@@ -104,6 +104,7 @@ class IndexController extends Zend_Controller_Action
 				else
 					$id=$this->currentModel->insert($this->currentForm->getValues());
 				$this->view->formResponse='<div class="success">Values added</div>';
+                var_dump($this->currentForm->getValues());
 				$this->form=$this->prepareForm($name);
                 // return $this->_helper->redirector->gotoSimple('list', null, null, array('model'=>$this->model));
 				$this->addEntryToSearchIndex($this->getLuceneUrl($id), 'text', 'title', 'channeltitle');
@@ -176,8 +177,6 @@ class IndexController extends Zend_Controller_Action
 		$bootstrap = $this->getInvokeArg('bootstrap'); 
         $options = $bootstrap->getOption('lucene');
 		$luceneDir=$options['dir'];
-		
-		var_dump($bootstrap->getOption('lucene'));
 		
 	    $index = new Zend_Search_Lucene($luceneDir);
 

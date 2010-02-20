@@ -9,6 +9,17 @@ class Default_Model_EnumeratedConceptualDomainValueMeaning extends Default_Model
 		return array();
 	}
 
+    public function deleteValues($id){
+        $where = $this->getAdapter()->quoteInto('idECD = ?', $id);
+        $retval = 0;
+        try {
+            $retval = $this->delete($where);
+        } catch (Exception $e) {
+            $retval = 0;
+        }
+        return $retval;
+    }
+
 }
 
 ?>
