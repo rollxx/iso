@@ -32,7 +32,7 @@ class Default_Form_IsoForm extends Zend_Form
 		$submit = new Zend_Form_Element_Submit('submit');
 		$submit	->setLabel('Save')
 				->setOrder(10)
-				->setIgnore(true);
+				->setIgnore(1);
 		$this->addElement($submit);
 		// $reset = new Zend_Form_Element_Reset('reset');
 		// $reset->setOrder(11);

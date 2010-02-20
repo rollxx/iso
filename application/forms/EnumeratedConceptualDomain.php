@@ -15,6 +15,7 @@ class Default_Form_EnumeratedConceptualDomain extends Default_Form_ConceptualDom
 			-> addMultiOptions($this->_getDependentSelect('Default_Model_ValueMeaning'))
 			->setDecorators($this->decorators);
 		$this->addElement($vm);
+		 $this->addDisplayGroup(array('idVM'), 'group1', array("legend" => "Enumerated Conceptual Domain specific values"));
 	}
 }
 

@@ -42,6 +42,7 @@ class Default_Form_DataElementConcept extends Default_Form_IsoForm
 			-> addMultiOptions($this->_getDependentSelect('Default_Model_ConceptualDomain'))
 			->setDecorators($this->decorators);
 		$this->addElement($cd);
+		$this->addDisplayGroup(array('Name', 'Definition', 'idOC', 'idP', 'idCD'), 'groups', array("legend" => "Data Element Concept"));
 		
 	}
 }

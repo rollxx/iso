@@ -17,6 +17,7 @@ class Default_Form_Value extends Default_Form_IsoForm
 				->addFilters(array('StringTrim'))
 				->setDecorators($this->decorators);
 		$this->addElement($value);
+		$this->addDisplayGroup(array('Value'), 'groups', array("legend" => "Value"));
 	}
 }
 

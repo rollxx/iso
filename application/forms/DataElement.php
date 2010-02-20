@@ -38,7 +38,7 @@ class Default_Form_DataElement extends Default_Form_IsoForm
 			->setDecorators($this->decorators);
 		$this->addElement($vm);
 		
-		// $this->addDisplayGroup(array('Name', 'Definition', 'idDEC', 'idVD'), 'groups', array("legend" => "Formschen"));
+		$this->addDisplayGroup(array('Name', 'Definition', 'idDEC', 'idVD'), 'groups', array("legend" => "Data Element"));
 	}
 }
 

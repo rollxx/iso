@@ -1,3 +1,5 @@
+<?php if($this->data) :?>
+
 <table>
 	<caption class="loud"><?= $this->caption  ?></caption>
 	<tr><thead>
@@ -27,3 +29,6 @@
 		}
 		?>
 </table>
+<?php else: ?>
+no values specified<br />
+<?php endif ?>

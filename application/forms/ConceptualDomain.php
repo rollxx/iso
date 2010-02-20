@@ -25,6 +25,7 @@ class Default_Form_ConceptualDomain extends Default_Form_IsoForm
 				->addMultiOptions($this->_getDependentSelect('Default_Model_Dimensionality'))
 				->setDecorators($this->decorators);
 		$this->addElement($dim);
+		 $this->addDisplayGroup(array('Name', 'idDim'), 'groups', array("legend" => "Conceptual Domain"));
 	}
 
 }

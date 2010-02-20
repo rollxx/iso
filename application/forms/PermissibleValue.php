@@ -23,6 +23,7 @@ class Default_Form_PermissibleValue extends Default_Form_IsoForm
 			-> addMultiOptions($this->_getDependentSelect('Default_Model_Value'))
 			->setDecorators($this->decorators);
 		$this->addElement($v);
+		$this->addDisplayGroup(array('idVM', 'idValue'), 'groups', array("legend" => "Permissible Value"));
 	}
 }
 ?>

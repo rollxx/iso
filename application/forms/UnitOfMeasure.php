@@ -24,6 +24,7 @@ class Default_Form_UnitOfMeasure extends Default_Form_IsoForm
 			-> addMultiOptions($this->_getDependentSelect('Default_Model_Dimensionality'))
 			->setDecorators($this->decorators);
 		$this->addElement($dim);
+		$this->addDisplayGroup(array('Description', 'idDim'), 'groups', array("legend" => "Unit of Measure"));
 	}
 }
 ?>

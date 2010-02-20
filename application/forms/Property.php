@@ -25,6 +25,7 @@ class Default_Form_Property extends Default_Form_IsoForm
 				->addFilters(array('StringTrim'))
 				->setDecorators($this->decorators);
 		$this->addElement($definition);
+		$this->addDisplayGroup(array('Name', 'Definition'), 'groups', array("legend" => "Property"));
 	
 	}
 }

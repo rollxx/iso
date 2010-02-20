@@ -15,6 +15,7 @@ class Default_Form_NonEnumeratedConceptualDomain extends Default_Form_Conceptual
 				->setDecorators($this->decorators)
 				;
 		$this->addElement($descr);
+		$this->addDisplayGroup(array('Description'), 'group1', array("legend" => "Non Enumerated Conceptual Domain specific values"));
 	}
 }
 

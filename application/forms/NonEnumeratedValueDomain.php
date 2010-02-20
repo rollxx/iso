@@ -13,6 +13,7 @@ class Default_Form_NonEnumeratedValueDomain extends Default_Form_ValueDomain
 				->addFilters(array('StringTrim'))
 				->setDecorators($this->decorators);
 		$this->addElement($descr);
+		$this->addDisplayGroup(array('Description'), 'group1', array("legend" => "Non Enumerated Value Domain specific values"));
 	}
 }
 

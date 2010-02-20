@@ -13,7 +13,8 @@ class Default_Model_NonEnumeratedConceptualDomain extends Default_Model_Conceptu
 	public function save($value){
 		$parentModel = new Default_Model_ConceptualDomain();
 		$id=$parentModel->insert(array('Name' =>$value['Name'], 'idDim' => $value['idDim']));
-		$this->insert(array('idNECD'=>$id, 'Description'=>$value['Description']));
+		$retval=$this->insert(array('idNECD'=>$id, 'Description'=>$value['Description']));
+		return $retval;
 	}
 
 	public function fetchOneRow($id){

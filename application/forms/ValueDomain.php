@@ -44,6 +44,7 @@ class Default_Form_ValueDomain extends Default_Form_IsoForm
 			-> addMultiOptions($this->_getDependentSelect('Default_Model_UnitOfMeasure'))
 			->setDecorators($this->decorators);
 		$this->addElement($uom);
+		$this->addDisplayGroup(array('Name', 'Data_type', 'Precision', 'idCD', 'idUOM'), 'groups', array("legend" => "Value Domain"));
 	}
 }
 

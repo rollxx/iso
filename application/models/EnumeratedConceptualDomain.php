@@ -14,10 +14,11 @@ class Default_Model_EnumeratedConceptualDomain extends Default_Model_ConceptualD
 	{
 		$parentModel = new Default_Model_ConceptualDomain();
 		$id=$parentModel->insert(array('Name' =>$value['Name'], 'idDim' => $value['idDim']));
-		$this->insert(array('idECD'=>$id));
+		$retval=$this->insert(array('idECD'=>$id));
 		$ecdvm = new Default_Model_EnumeratedConceptualDomainValueMeaning();
 		foreach ($value['idVM'] as $key => $v)
-			$ecdvm->insert(array('idECD'=>$id, 'idVM'=>$v));			
+			$ecdvm->insert(array('idECD'=>$id, 'idVM'=>$v));
+		return $retval;
 	}
 
 	public function fetchOneRow($id){
@@ -27,7 +28,6 @@ class Default_Model_EnumeratedConceptualDomain extends Default_Model_ConceptualD
 	}
 
 
-	
 }
 
 ?>

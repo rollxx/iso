@@ -18,6 +18,7 @@ class Default_Form_ValueMeaning extends Default_Form_IsoForm
 				->addFilters(array('StringTrim'))
 				->setDecorators($this->decorators);
 		$this->addElement($meaning);
+		$this->addDisplayGroup(array('Meaning'), 'groups', array("legend" => "Value Meaning"));
 	}
 }
 

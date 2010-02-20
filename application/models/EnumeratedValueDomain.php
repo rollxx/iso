@@ -27,7 +27,8 @@ class Default_Model_EnumeratedValueDomain extends Default_Model_ValueDomain {
 	public function save($value){
 		$parentModel = new Default_Model_ValueDomain();
 		$id=$parentModel->insert(array('Name' =>$value['Name'], 'Data_type' => $value['Data_type'], 'Precision' => $value['Precision'], 'idCD' => $value['idCD'], 'idUOM' => $value['idUOM']));
-		$this->insert(array('idEVD'=>$id));
+		$retval=$this->insert(array('idEVD'=>$id));
+		return $retval;
 	}
 
 	public function getPrintableArray(){

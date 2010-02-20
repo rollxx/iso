@@ -16,6 +16,7 @@ class Default_Form_Dimensionality extends Default_Form_IsoForm
 				->addFilters(array('StringTrim'))
 				->setDecorators($this->decorators);
 		$this->addElement($descr);
+		$this->addDisplayGroup(array('description'), 'groups', array("legend" => "Dimensionality"));
 	}
 	
 }

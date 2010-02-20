@@ -60,7 +60,6 @@ abstract class Default_Model_IsoModel extends Zend_Db_Table_Abstract {
 		}
 	}
 	
-	
 }
 
 ?>
