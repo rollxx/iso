@@ -67,6 +67,10 @@ abstract class Default_Model_IsoModel extends Zend_Db_Table_Abstract {
         // http://framework.zend.com/issues/browse/ZF-3837
         return $this->_db->lastInsertId();
     }
+
+    public function getPrimaryKey(){
+        return $this->_primary[1];
+    }
 }
 
 ?>

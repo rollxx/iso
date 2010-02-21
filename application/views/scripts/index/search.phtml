@@ -1,11 +1,16 @@
-<?php
-if($this->query){
+<form action="search">
+
+    <input type="text" name="q"/>
+    <input type="submit" value="search"/>
+</form>
+<?php if($this->query){
     foreach ($this->matches as $match){
         $doc = $match->getDocument();
-        echo $this->query->highlightMatches($match->url);
+        echo "<li class=\"searchresults\"><a href=\"$match->url\">";
         foreach ($doc->getFieldNames() as $name){
-            echo '<br/><b>'.$name .':</b> ' .$this->query->highlightMatches($doc->getFieldValue($name)).'<br/>';
+            echo '<b>'.$name .':</b> ' .$this->query->highlightMatches($doc->getFieldValue($name)).': ';
         }
+        echo "</a></li><br/>";
     }
 } else {
     echo 'add q to url';
