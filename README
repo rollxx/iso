@@ -8,3 +8,5 @@ Installation instructions:
 2.5. You can use the mysql dump application/scripts/iso11179.sql
 3. modify configs/application.ini (modify resources.db.*)
 4. enjoy
+
+To rebuild the search index execute "/Index/updatesearchindex" 

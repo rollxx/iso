@@ -40,7 +40,6 @@ class IndexController extends Zend_Controller_Action
                 'action'=>'list',
                 'model'=>$this->model
             ), '', true);
-                //			var_dump($this->getLuceneUrl());
             $this->updateEntryInSearch($this->getLuceneUrl());
         } else {
             throw new Exception ('Problem deleting values for id = '.$id.' in Model '.$activeModel.'.');
@@ -127,14 +126,11 @@ class IndexController extends Zend_Controller_Action
         $this->view->formResponse = '';
         $request = $this->getRequest();
         $this->prepareForm($name);
-            //        var_dump($this->currentForm->getValues());
         if ($request->isPost()) {
-            var_dump($this->currentForm->getValues());
             if ($this->currentForm->isValid($request->getPost())) {
                 if (method_exists($this->currentModel, 'updateOneRow')){
                     $this->currentModel->updateOneRow($this->currentForm->getValues());
                     $this->updateEntryInSearch($this->getLuceneUrl(), $this->currentForm->getValues());
-                    //                    var_dump($this->currentForm->getValues());
                 }
             }
             else {
@@ -171,7 +167,7 @@ class IndexController extends Zend_Controller_Action
 
         $doc->addField(Zend_Search_Lucene_Field::Keyword('url', $url));
         foreach ($content as $key => $value){
-            if($value && strlen($value) && !is_numeric($value))
+            if(!is_array($value) && $value && strlen($value) && !is_numeric($value))
                 $doc->addField(Zend_Search_Lucene_Field::Text($key, $value));
         }
 
@@ -186,7 +182,6 @@ class IndexController extends Zend_Controller_Action
         $options = $this->getInvokeArg('bootstrap')->getOption('lucene');
         $index = new Zend_Search_Lucene($options['dir']);
         $hits=$index->find('url:'.$url);
-        var_dump($hits);
         foreach ($hits as $hit) {
             $index->delete($hit->id);
         }
