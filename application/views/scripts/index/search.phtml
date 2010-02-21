@@ -1,15 +1,14 @@
-<form method='GET' action='/feed/viewSearchResults'>
-    Query: <input name='query'><br>
-    Choose a field to search:<br>
-    <input type='radio' name='field' value='raw' checked="yes">
-        Raw String (allows fancy search types)<br>
-    <input type='radio' name='field'
- value='contents'>Contents<br>
-    <input type='radio' name='field' value='feedname'>Feed
- Title<br>
-    <input type='radio' name='field' value='articletitle'>
-        Article Title<br>
-    Slop (not allowed for Raw String searches):
-        <input name='slop' value='0'><br>
-    <input type='Submit' value='Search'>
-  </form>
+<?php
+if($this->query){
+    foreach ($this->matches as $match){
+        $doc = $match->getDocument();
+        echo $this->query->highlightMatches($match->url);
+        foreach ($doc->getFieldNames() as $name){
+            echo '<br/><b>'.$name .':</b> ' .$this->query->highlightMatches($doc->getFieldValue($name)).'<br/>';
+        }
+    }
+} else {
+    echo 'add q to url';
+}
+
+?>
