@@ -1,4 +1,10 @@
 <?php
+/**
+ * @author Rolland Brunec <rollxx@gmail.com>
+ * @copyright Copyright (c) 2010, {@link http://www.imise.uni-leipzig.de/ imise}
+ * @version    $Id$
+ */
+
 
 abstract class Default_Model_IsoModel extends Zend_Db_Table_Abstract {
 

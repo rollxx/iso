@@ -1,5 +1,12 @@
 <?php
-//depricated
+/**
+ * @author Rolland Brunec <rollxx@gmail.com>
+ * @copyright Copyright (c) 2010, {@link http://www.imise.uni-leipzig.de/ imise}
+ * @version    $Id$
+ */
+
+
+//depricated?
 class Default_Model_EnumeratedConceptualDomainValueMeaning extends Default_Model_IsoModel {
     protected $_name = 'ecd_vm';
 

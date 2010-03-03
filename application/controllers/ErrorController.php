@@ -1,4 +1,9 @@
 <?php
+/**
+ * @author Rolland Brunec <rollxx@gmail.com>
+ * @copyright Copyright (c) 2010, {@link http://www.imise.uni-leipzig.de/ imise}
+ * @version    $Id$
+ */
 
 class ErrorController extends Zend_Controller_Action
 {
