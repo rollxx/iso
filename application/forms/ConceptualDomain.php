@@ -8,6 +8,14 @@ class Default_Form_ConceptualDomain extends Default_Form_IsoForm
 	
 	function init()
 	{
+		if (get_class($this)==='Default_Form_ConceptualDomain') {
+			$err = new Zend_Form_Element_Text('err');
+			$err	->setValue('Please use the subclass...')
+					->setAttrib('readonly', true)
+					->setDecorators($this->decorators);
+			$this->addElement($err);
+			return;
+		}
 		parent::init();
 		$this->setMethod('post');
 

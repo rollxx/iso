@@ -9,4 +9,10 @@ Installation instructions:
 3. modify configs/application.ini (modify resources.db.*)
 4. enjoy
 
-To rebuild the search index execute "/Index/updatesearchindex" 
+Search:
+
+Implemented with Zend's Lucene port. 
+* Features:
+	1. Keyword search(case sensitive): The following query will search only in Definitions: "Definition:mydefinition". The keywords are taken from the DB
+	2. See query language documentation for complete list of features. http://framework.zend.com/manual/en/zend.search.lucene.query-language.html
+	3. To rebuild and optimize the search index execute "{baseurl}/Index/updatesearchindex" in your browser
